@@ -1,8 +1,10 @@
 public class TP3 {
     public static void main(String args[]) {
-        String path = args[1];
+        /*String path = args[1];*/
+        String path = "./exemplaires/LEGO_50_50_1000";
 
-        SingleFile singleFile = new SingleFile(path);
+        Reader reader = new Reader(path);
+        File singleFile = reader.read();
 
         System.out.println(path);
     }

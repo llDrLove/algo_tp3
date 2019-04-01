@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TP3",
+            "request": "launch",
+            "mainClass": "TP3",
+            "vmArgs": "--enable-preview"
+        }
+    ]
+}
