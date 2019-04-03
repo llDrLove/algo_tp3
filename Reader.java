@@ -35,12 +35,12 @@ public class Reader {
 
             for (int i = 0; i < this.singleFile.getNbModels(); i++) {
                 splited = bufferedReader.readLine().split("\\s+");
-                Model model = new Model(this.singleFile.getNbPiecesTypes());
+                Model model = new Model(this.singleFile.getNbPiecesTypes(), i);
                 for (int j = 0; j < this.singleFile.getNbPiecesTypes(); j++) {
                     // Read the pieces owned
                     model.addPieceNb(j, Integer.parseInt(splited[j]));
                 }
-                
+                model.calculateRatio();
                 this.singleFile.addModel(model, i);
             }
             
