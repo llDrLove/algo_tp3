@@ -1,5 +1,3 @@
-import java.util.*; 
-
 public class File {
     private int nbPieceTypes;
     private int nbModels;
@@ -8,7 +6,6 @@ public class File {
     private double nbOwnedPieces;
     private int[] piecePrices;
     private Model[]  models;
-    private ArrayList<Model> chosenModels;
     private int cost;
 
     File(int nbTypes) {
@@ -17,9 +14,12 @@ public class File {
         this.cost = 0;
         this.ownedPieces = new double[nbTypes];
         this.ownedRatios = new double[nbTypes];
-        this.models = new Model[nbTypes];
         this.piecePrices = new int[nbTypes];
-        this.chosenModels = new ArrayList<Model>();
+    }
+
+    public void initModels(int nbModels) {
+        this.models = new Model[nbModels];
+        this.nbModels = nbModels;
     }
 
     public int getNbPiecesTypes() {
@@ -30,8 +30,8 @@ public class File {
         return this.nbModels;
     }
 
-    public void setNbModels(int nbModels) {
-        this.nbModels = nbModels;
+    public int[] getPrices() {
+        return this.piecePrices;
     }
 
     public void setNbPiecesTypes(int nbPieceTypes) {
@@ -86,7 +86,7 @@ public class File {
     }
 
     public void buildModel(Model modelToBuild) {
-        this.chosenModels.add(modelToBuild);
+        modelToBuild.incrementValue();
         double[] piecesToBuild = modelToBuild.getPiecesRequired();
         for (int i = 0; i < this.ownedPieces.length; i++) {
             if(piecesToBuild[i] == 0) {
@@ -109,8 +109,10 @@ public class File {
     }
 
     public void printSolution() {
-        for (Model model : this.chosenModels) {
-            System.out.print(model.getModelNb() + " ");
+        String toPrint = "";
+        for (Model model : this.models) { 
+            toPrint += model.getValue() + " ";
         }
+        System.out.print(toPrint);
     }
 }

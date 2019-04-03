@@ -5,12 +5,14 @@ public class Model {
     private double totalPieces;
     private double diffRatios;
     private int modelNb;
+    private int value;
 
     Model(int nbPiece, int index) {
         this.piecesRequired = new double[nbPiece];
         this.ratios = new double[nbPiece];
         this.totalPieces = 0;
-        this.modelNb = index + 1;
+        this.modelNb = index;
+        this.value = 0;
     }
 
     public double getNbPiece(int index) {
@@ -19,6 +21,10 @@ public class Model {
 
     public double[] getPiecesRequired() {
         return this.piecesRequired;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 
     public int getModelNb() {
@@ -36,10 +42,15 @@ public class Model {
         }
     }
 
+    public void incrementValue() {
+        this.value++;
+    }
+
     public double compareRatios(double[] ownedRatios) {
         this.diffRatios = 0;
         for (int i = 0; i < this.piecesRequired.length; i++) {
-            this.diffRatios += Math.abs(this.ratios[i] - ownedRatios[i]);
+            double diff = this.ratios[i] - ownedRatios[i];
+            this.diffRatios += Math.abs(diff);
         }
         return this.diffRatios;
     }

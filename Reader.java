@@ -31,7 +31,7 @@ public class Reader {
                 this.singleFile.addPiecePrice(Integer.parseInt(splited[i]), i);
             }
 
-            this.singleFile.setNbModels(Integer.parseInt(bufferedReader.readLine()));
+            this.singleFile.initModels(Integer.parseInt(bufferedReader.readLine()));
 
             for (int i = 0; i < this.singleFile.getNbModels(); i++) {
                 splited = bufferedReader.readLine().split("\\s+");
