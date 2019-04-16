@@ -22,5 +22,6 @@ public class TP3 {
             singleFile.buildModel(bestModel);
         }
         singleFile.printSolution();
+		while(true);
     }
 }
